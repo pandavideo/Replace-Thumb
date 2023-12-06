@@ -23,4 +23,4 @@ This code demonstrates how to use the PandaVideo API to replace a thumbnail in J
 ## Documentation
 
 For detailed API reference, please visit the [PandaVideo API Replace Thumb Endpoint Documentation](https://pandavideo.readme.io/reference/replace-thumb).
-```
+
