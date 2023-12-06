@@ -18,7 +18,7 @@ const options = {
   method: 'POST', // Set the request method as POST
   headers: {
     accept: 'application/json', // Specify the type of response expected
-    Authorization: API_KEY, // Add the authorization token or API key
+    Authorization: API_KEY, // Add the API key
     ...formData.getHeaders(), // Include the form data headers to specify multipart form data
   },
   body: formData, // Set the request body as the FormData object
