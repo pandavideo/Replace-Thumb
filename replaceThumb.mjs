@@ -2,22 +2,30 @@ import fetch from 'node-fetch';
 import fs from 'fs';
 import FormData from 'form-data';
 
+// Define variables for API key and video ID
+const API_KEY = 'YOUR_API_KEY_HERE';
+const VIDEO_ID = 'YOUR_VIDEO_ID_HERE';
+
+// Read image file as binary data
 const imageData = fs.readFileSync('a.jpg');
 
+// Create FormData object to prepare form data for the request
 const formData = new FormData();
-formData.append('file', imageData, { filename: 'a.jpg' });
+formData.append('file', imageData, { filename: 'a.jpg' }); // Append the image data to the FormData object
 
+// Set options for the HTTP request
 const options = {
-  method: 'POST',
+  method: 'POST', // Set the request method as POST
   headers: {
-    accept: 'application/json',
-    Authorization: 'panda-e6bace2e8f14ca377b35f79caf14d56be70ad0dc7f55c1c50a5c6af127e13223',
-    ...formData.getHeaders(), 
+    accept: 'application/json', // Specify the type of response expected
+    Authorization: API_KEY, // Add the authorization token or API key
+    ...formData.getHeaders(), // Include the form data headers to specify multipart form data
   },
-  body: formData,
+  body: formData, // Set the request body as the FormData object
 };
 
-fetch('https://api-v2.pandavideo.com.br/thumbs/d82742f3-872e-44e7-ab89-33003396d2b8?type=video', options)
-  .then(response => response.json())
-  .then(response => console.log(response))
-  .catch(err => console.error(err));
+// Send the POST request to the specified API endpoint
+fetch(`https://api-v2.pandavideo.com.br/thumbs/${VIDEO_ID}?type=video`, options)
+  .then(response => response.json()) // Parse the response body as JSON
+  .then(response => console.log(response)) // Log the parsed JSON response
+  .catch(err => console.error(err)); // Log any errors encountered during the request
